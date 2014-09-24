@@ -35,7 +35,13 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex color-theme livescript-mode org-trello clj-refactor org-pomodoro wgrep))
+(prelude-require-packages '(auctex clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor org-pomodoro wgrep))
+
+;;;;;;;;;;;;;;;
+;; yasnippet ;;
+;;;;;;;;;;;;;;;
+
+(add-hook 'clojure-mode-hook (lambda () (yas/minor-mode 1)))
 
 ;;;;;;;;;;;;;;;;;;
 ;; Key Bindings ;;
