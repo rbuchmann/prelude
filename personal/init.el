@@ -35,7 +35,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor org-pomodoro wgrep))
+(prelude-require-packages '(auctex clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor org-pomodoro wgrep slamhound))
 
 ;;;;;;;;;;;;;;;
 ;; yasnippet ;;
