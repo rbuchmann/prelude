@@ -17,7 +17,7 @@
      (buffers-tab ((t (:background "black" :foreground "white"))))
      (font-lock-builtin-face ((t (:foreground "white"))))
      (font-lock-comment-face ((t (:foreground "#428BDD"))))
-     (font-lock-constant-face ((t (:foreground "#00CC00"))))
+     (font-lock-constant-face ((t (:foreground "DarkOrange"))))
      (font-lock-doc-string-face ((t (:foreground "DarkOrange"))))
      (font-lock-function-name-face ((t (:foreground "white"))))
      (font-lock-keyword-face ((t (:foreground "#F9BB00"))))
