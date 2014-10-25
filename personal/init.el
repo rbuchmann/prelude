@@ -16,7 +16,7 @@
 (setq prelude-flyspell nil)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(setq-default indent-tabs-mode t)
+(setq-default indent-tabs-mode nil)
 
 (setq-default cursor-type 'bar)
 (blink-cursor-mode nil)
@@ -35,7 +35,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor org-pomodoro wgrep slamhound))
+(prelude-require-packages '(auctex clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor org-pomodoro wgrep slamhound tup-mode))
 
 ;;;;;;;;;;;;;;;
 ;; yasnippet ;;
