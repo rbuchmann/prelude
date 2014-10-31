@@ -41,7 +41,9 @@
 ;; yasnippet ;;
 ;;;;;;;;;;;;;;;
 
-(add-hook 'clojure-mode-hook (lambda () (yas/minor-mode 1)))
+(yas-global-mode 1)
+(setq yas-snippet-dirs (append yas-snippet-dirs '("~/.emacs.d/personal/snippets")))
+(yas-load-directory "~/.emacs.d/personal/snippets")
 
 ;;;;;;;;;;;;;;;;;;
 ;; Key Bindings ;;
@@ -74,7 +76,7 @@
 ;(tool-bar-mode -1)
 ;(menu-bar-mode -1)
 (set-scroll-bar-mode 'right)
-(set-default-font "Monospace-12")
+(set-default-font "Monospace-16")
 
 (require 'color-theme)
 ;(load "color-theme-blue")
@@ -137,6 +139,13 @@
 
 (require 'wgrep)
 
+;;;;;;;;;;;;;;;;;;;;
+;; stringtemplate ;;
+;;;;;;;;;;;;;;;;;;;;
+
+(load-file "~/.emacs.d/personal/stringtemplate-mode.el")
+(require 'stringtemplate-mode)
+
 ;;;;;;;;;;;;;;
 ;; pomodoro ;;
 ;;;;;;;;;;;;;;
@@ -149,6 +158,9 @@
 
 (setq org-agenda-files (list "~/org/"))
 
+(setq org-src-fontify-natively t)
+
+
 (setq org-todo-keywords
      '((sequence "TODO(t)" "|" "DONE(d!)" "CANCELED(c@)")))
 
@@ -160,11 +172,4 @@
 (require 'clj-refactor)
 (add-hook 'clojure-mode-hook (lambda ()
                                (clj-refactor-mode 1)
-			       (cljr-add-keybindings-with-prefix "C-c C-f")))
-
-;;;;;;;;;;;;
-;; trello ;;
-;;;;;;;;;;;;
-
-(require 'org-trello)
-(add-hook 'org-mode-hook (lambda () (org-trello-mode 1)))
+                               (cljr-add-keybindings-with-prefix "C-c C-f")))

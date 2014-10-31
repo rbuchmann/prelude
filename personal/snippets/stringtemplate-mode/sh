@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: sh heredoc template
+# key: sh
+# binding: direct-keybinding
+# --
+$1($2) ::= <<
+$0
+>>
