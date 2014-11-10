@@ -25,9 +25,8 @@
       query-replace-highlight t)
 (setq x-select-enable-clipboard t)
 
-(custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
-
+(add-to-list 'default-frame-alist '(font . "Monospace-16"))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (setq-default frame-title-format "%b %f")
 
