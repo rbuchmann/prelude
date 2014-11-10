@@ -31,6 +31,8 @@
 
 (setq-default frame-title-format "%b %f")
 
+(setq prelude-whitespace nil)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -50,6 +52,7 @@
 ;;;;;;;;;;;;;;;;;;
 
 (global-set-key [f8]   (lambda()(interactive)(find-file (concat conf-dir "init.el"))))
+(global-set-key [f9]   (lambda()(interactive)(find-file "~/.lein/profiles.clj")))
 (add-hook 'clojure-mode-hook '(lambda ()
                                 (local-set-key (kbd "RET") 'newline-and-indent)))
 
