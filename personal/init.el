@@ -96,7 +96,7 @@
 ;; AucTex ;;
 ;;;;;;;;;;;;
 
-(load "auctex.el" nil t t)
+(require 'tex-site)
 (setq prelude-guru nil)
 
 (add-hook 'LaTeX-mode-hook
