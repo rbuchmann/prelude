@@ -52,6 +52,7 @@
 
 (global-set-key [f8]   (lambda()(interactive)(find-file (concat conf-dir "init.el"))))
 (global-set-key [f9]   (lambda()(interactive)(find-file "~/.lein/profiles.clj")))
+(global-set-key [f10] (lambda()(interactive)(comment-or-uncomment-region (region-beginning) (region-end))))
 (add-hook 'clojure-mode-hook '(lambda ()
                                 (local-set-key (kbd "RET") 'newline-and-indent)))
 
