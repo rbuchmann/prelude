@@ -1,0 +1,2 @@
+(setq development-dir "/home/rasmus/programming/projects")
+(setq local-font "Monospace-16")

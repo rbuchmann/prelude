@@ -20,5 +20,4 @@ session*
 .cask
 tramp
 /var/pcache
-.emacs.desktop
-.emacs.desktop.lock
+/personal/local_settings.el

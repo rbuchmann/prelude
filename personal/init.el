@@ -25,7 +25,9 @@
       query-replace-highlight t)
 (setq x-select-enable-clipboard t)
 
-(add-to-list 'default-frame-alist '(font . "Monospace-16"))
+(load-file "~/.emacs.d/personal/local_settings.el")
+
+(add-to-list 'default-frame-alist (cons 'font local-font))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (setq-default frame-title-format "%b %f")
@@ -79,7 +81,7 @@
 ;(tool-bar-mode -1)
 ;(menu-bar-mode -1)
 (set-scroll-bar-mode 'right)
-(set-default-font "Monospace-16")
+(set-default-font local-font)
 
 (require 'color-theme)
 ;(load "color-theme-blue")
