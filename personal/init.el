@@ -133,6 +133,23 @@
              comment-line "\n\n"))))
 
 
+;;;;;;;;;;;;;
+;; clojure ;;
+;;;;;;;;;;;;;
+
+(load-file "~/.emacs.d/personal/clovenience.el")
+
+(require 'clj-refactor)
+
+(add-hook 'clojure-mode-hook (lambda ()
+                               (clj-refactor-mode 1)
+                               (cljr-add-keybindings-with-prefix "C-c C-f")
+                               (define-key clojure-mode-map (kbd "C-c C-t")   'clojure-goto-test-or-back)
+                               (define-key clojure-mode-map (kbd "C-c C-a") 'clojure-add-ns)
+))
+
+
+
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (setq nrepl-hide-special-buffers t)
@@ -162,13 +179,3 @@
 
 (setq org-todo-keywords
      '((sequence "TODO(t)" "|" "DONE(d!)" "CANCELED(c@)")))
-
-
-;;;;;;;;;;;;;;;;;;
-;; clj-refactor ;;
-;;;;;;;;;;;;;;;;;;
-
-(require 'clj-refactor)
-(add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               (cljr-add-keybindings-with-prefix "C-c C-f")))
