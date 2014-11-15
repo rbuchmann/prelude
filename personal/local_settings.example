@@ -1,2 +1,0 @@
-(setq local-font "Monospace-16")
-(setq-default magit-gerrit-ssh-creds "foouser@barhost:<bazport>")
