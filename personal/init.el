@@ -144,7 +144,7 @@
 (add-hook 'clojure-mode-hook (lambda ()
                                (clj-refactor-mode 1)
                                (cljr-add-keybindings-with-prefix "C-c C-f")
-                               (define-key clojure-mode-map (kbd "C-c C-t")   'clojure-goto-test-or-back)
+                               (define-key clojure-mode-map (kbd "C-c C-s")   'clojure-goto-test-or-back)
                                (define-key clojure-mode-map (kbd "C-c C-a") 'clojure-add-ns)
 ))
 

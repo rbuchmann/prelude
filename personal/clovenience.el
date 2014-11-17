@@ -36,19 +36,22 @@
       (progn (make-directory dir t)
              (find-file file)))))
 
+(defun clojure-remove-extension (s)
+  (replace-regexp-in-string "\\(_test\\)?\\.clj\\(s\\)?$" "" s))
+
 (defun clojure-goto-test-or-back ()
   (interactive)
   (let* ((current-file    (buffer-file-name))
          (current-project (locate-dominating-file current-file
                                                   "project.clj"))
-         (test-p          (string-match "/test/" current-file))
+         (test-p          (string-match "_test" current-file))
          (rel-filename    (file-relative-name
                            current-file
                            (concat current-project
                                    (if test-p "test/" "src/"))))
          (outer-path      (concat current-project
                                   (if test-p "src/" "test/")))
-         (target-file     (concat outer-path (file-name-sans-extension rel-filename)
+         (target-file     (concat outer-path (clojure-remove-extension rel-filename)
                                   (if test-p ".clj" "_test.clj"))))
     (other-window 1)
     (if (or test-p
