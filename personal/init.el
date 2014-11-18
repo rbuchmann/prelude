@@ -23,7 +23,6 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq search-highlight t
       query-replace-highlight t)
-(setq x-select-enable-clipboard t)
 
 (load-file "~/.emacs.d/personal/local_settings.el")
 
