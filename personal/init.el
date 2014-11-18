@@ -38,7 +38,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor wgrep slamhound tup-mode))
+(prelude-require-packages '(auctex clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor slamhound tup-mode))
 
 ;;;;;;;;;;;;;;;
 ;; yasnippet ;;
@@ -154,12 +154,6 @@
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (setq nrepl-hide-special-buffers t)
 (setq cider-repl-use-clojure-font-lock t)
-
-;;;;;;;;;;;
-;; wgrep ;;
-;;;;;;;;;;;
-
-(require 'wgrep)
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; stringtemplate ;;
