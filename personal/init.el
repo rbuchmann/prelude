@@ -154,6 +154,10 @@
 (setq nrepl-hide-special-buffers t)
 (setq cider-repl-use-clojure-font-lock t)
 
+(define-clojure-indent
+  (describe 'defun)
+  (it 'defun))
+
 ;;;;;;;;;;;;;;;;;;;;
 ;; stringtemplate ;;
 ;;;;;;;;;;;;;;;;;;;;
