@@ -39,6 +39,14 @@
 
 (prelude-require-packages '(auctex clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor slamhound tup-mode))
 
+;;;;;;;;;;
+;; helm ;;
+;;;;;;;;;;
+
+(require 'helm-files)
+(add-to-list 'helm-boring-file-regexp-list "\\.$" "\\.\\.$")
+(setq helm-ff-skip-boring-files t)
+
 ;;;;;;;;;;;;;;;
 ;; yasnippet ;;
 ;;;;;;;;;;;;;;;
