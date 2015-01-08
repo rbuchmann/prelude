@@ -109,12 +109,17 @@
 (require 'tex-site)
 (setq prelude-guru nil)
 
+(require 'reftex)
+
 (add-hook 'LaTeX-mode-hook
           (lambda ()
             (ispell-change-dictionary "english")
             (setq TeX-open-quote "\"`")
             (setq TeX-close-quote "\"'")
-            (LaTeX-math-mode)))
+            (LaTeX-math-mode)
+            (reftex-mode)))
+
+(setq reftex-plug-into-AUCTeX t)
 
 (setq TeX-auto-save t)
 
