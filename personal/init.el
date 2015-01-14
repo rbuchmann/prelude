@@ -37,7 +37,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor slamhound tup-mode))
+(prelude-require-packages '(auctex auctex-latexmk clojure-mode clojure-snippets color-theme livescript-mode org-trello clj-refactor slamhound tup-mode))
 
 ;;;;;;;;;;
 ;; helm ;;
@@ -122,6 +122,9 @@
 (setq reftex-plug-into-AUCTeX t)
 
 (setq TeX-auto-save t)
+
+(require 'auctex-latexmk)
+(auctex-latexmk-setup)
 
 ;Support for Emacs, and XEmacs on MS-Windows with the development version, only. Support for XEmacs on MS-Windows/native is limited due to missing fonts (support for Latin-1, Latin-5 and half the math symbols only, no super- and subscripts).
 (setq TeX-parse-self t)
