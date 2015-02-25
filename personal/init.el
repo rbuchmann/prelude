@@ -99,6 +99,7 @@
 ;;(load "color-theme-sunburst")(color-theme-tm)
 
 (global-font-lock-mode 1)
+(global-hl-line-mode -1)
 ;; maximum colors
 (setq font-lock-maximum-decoration t)
 
