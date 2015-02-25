@@ -44,7 +44,7 @@
 ;;;;;;;;;;
 
 (require 'helm-files)
-(add-to-list 'helm-boring-file-regexp-list "\\.$" "\\.\\.$")
+(add-to-list 'helm-boring-file-regexp-list "\\.$" "\\.\\.$" "\\.bst$" "\\.aux$" "\\.cls$" "\\.fdb_latexmk$" "\\.fls" "\\.bbl$" "\\.blg$")
 (setq helm-ff-skip-boring-files t)
 
 ;;;;;;;;;;;;;;;
