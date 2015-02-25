@@ -136,7 +136,7 @@
   (interactive)
   (add-latexmkrc)
   (with-temp-file (concat (file-name-directory (buffer-file-name)) ".projectile")
-    (insert "+*.bst\n+*.cls\n+*.fdb_latexmk\n+*.fls\n+*.bbl\n+*.blg\n+*.aux")))
+    (insert "-*.bst\n-*.cls\n-*.fdb_latexmk\n-*.fls\n-*.bbl\n-*.blg\n-*.aux")))
 
 ;Support for Emacs, and XEmacs on MS-Windows with the development version, only. Support for XEmacs on MS-Windows/native is limited due to missing fonts (support for Latin-1, Latin-5 and half the math symbols only, no super- and subscripts).
 (setq TeX-parse-self t)
