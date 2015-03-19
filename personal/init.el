@@ -118,6 +118,7 @@
             (setq TeX-open-quote "\"`")
             (setq TeX-close-quote "\"'")
             (LaTeX-math-mode)
+            (outline-minor-mode)
             (reftex-mode)))
 
 (setq reftex-plug-into-AUCTeX t)
