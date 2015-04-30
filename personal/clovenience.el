@@ -53,7 +53,6 @@
                                   (if test-p "src/" "test/")))
          (target-file     (concat outer-path (clojure-remove-extension rel-filename)
                                   (if test-p ".clj" "_test.clj"))))
-    (other-window 1)
     (if (or test-p
             (file-exists-p target-file)
             (find-buffer-visiting target-file))
