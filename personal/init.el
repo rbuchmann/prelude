@@ -180,7 +180,9 @@
 
 (define-clojure-indent
   (describe 'defun)
-  (it 'defun))
+  (it 'defun)
+  (facts 'defun)
+  (fact 'defun))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; stringtemplate ;;
