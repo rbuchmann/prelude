@@ -33,6 +33,8 @@
 
 (setq prelude-whitespace nil)
 
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -119,7 +121,8 @@
             (setq TeX-close-quote "\"'")
             (LaTeX-math-mode)
             (outline-minor-mode)
-            (reftex-mode)))
+            (reftex-mode)
+            (auto-fill-mode)))
 
 (setq reftex-plug-into-AUCTeX t)
 
