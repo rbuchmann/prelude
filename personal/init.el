@@ -137,6 +137,9 @@
     (insert "$pdf_mode=1;")))
 
 
+(setq TeX-electric-sub-and-superscript t)
+(setq TeX-electric-math (cons "$" "$"))
+
 ;Support for Emacs, and XEmacs on MS-Windows with the development version, only. Support for XEmacs on MS-Windows/native is limited due to missing fonts (support for Latin-1, Latin-5 and half the math symbols only, no super- and subscripts).
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
@@ -175,10 +178,10 @@
 ))
 
 
+(add-to-list 'auto-mode-alist '("\.pxi$" . clojure-mode))
 
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(setq nrepl-hide-special-buffers t)
 (setq cider-repl-use-clojure-font-lock t)
 
 (define-clojure-indent

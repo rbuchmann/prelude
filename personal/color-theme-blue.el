@@ -3,7 +3,7 @@
   (interactive)
   (color-theme-install
    '(color-theme-blue
-     ((background-color . "#162433")
+     ((background-color . "black")
       (background-mode . dark)
       (border-color . "black")
       (cursor-color . "yellow")
