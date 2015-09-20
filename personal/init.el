@@ -67,6 +67,8 @@
 (add-hook 'clojure-mode-hook '(lambda ()
                                 (local-set-key (kbd "RET") 'newline-and-indent)))
 
+(global-set-key (kbd "C-x ,") 'comment-or-uncomment-region)
+
 ;;;;;;;;;;;;;;;;
 ;; livescript ;;
 ;;;;;;;;;;;;;;;;
