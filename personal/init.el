@@ -210,3 +210,9 @@
 
 (setq org-todo-keywords
      '((sequence "TODO(t)" "|" "DONE(d!)" "CANCELED(c@)")))
+
+;;;;;;;;;;;
+;; magit ;;
+;;;;;;;;;;;
+
+(setq magit-push-always-verify nil)
