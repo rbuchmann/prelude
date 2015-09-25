@@ -116,6 +116,9 @@
 
 (require 'reftex)
 
+(add-to-list 'reftex-label-alist
+             '("theorem" ?h "thr:" "~\\ref{%s}" t   ("theorem" "th.") -3))
+
 (add-hook 'LaTeX-mode-hook
           (lambda ()
             (ispell-change-dictionary "english")
@@ -124,7 +127,9 @@
             (LaTeX-math-mode)
             (outline-minor-mode)
             (reftex-mode)
-            (auto-fill-mode)))
+            (auto-fill-mode)
+            (LaTeX-add-environments
+             '("theorem" LaTeX-env-label))))
 
 (setq reftex-plug-into-AUCTeX t)
 
