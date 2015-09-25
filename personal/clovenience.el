@@ -99,3 +99,22 @@
 
 (add-hook 'before-save-hook
           'clojure-cleanup-ns)
+
+(defun cider-start-browser-repl ()
+  "Start a browser repl"
+  (interactive)
+  (remove-hook 'cider-connected-hook 'cider-start-browser-repl)
+  (let ((buffer (cider-current-repl-buffer)))
+    (cider-eval "(do (use 'figwheel-sidecar.repl-api)
+                     (cljs-repl))"
+                (lambda (x)
+                  (message "connected"))
+                (cider-current-connection)
+                (cider-current-session))))
+
+(defun clojurescript-repl ()
+  (interactive)
+  ;(add-hook 'cider-connected-hook 'cider-start-browser-repl)
+  (cider-connect "localhost" 7888))
+
+(setq cider-prompt-for-project-on-connect nil)
