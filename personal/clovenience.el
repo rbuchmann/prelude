@@ -119,3 +119,8 @@
   (cider-connect "localhost" 7888))
 
 (setq cider-prompt-for-project-on-connect nil)
+
+(add-to-list 'projectile-globally-ignored-directories "target")
+(add-to-list 'projectile-globally-ignored-directories "out")
+(add-to-list 'projectile-globally-ignored-directories "node_modules")
+(add-to-list 'projectile-globally-ignored-directories "resources")
