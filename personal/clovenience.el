@@ -62,16 +62,17 @@
 
 
 (defun clojure-align-requires ()
-  (catch 'exit
-    (beginning-of-buffer)
-    (search-forward ":require "
-                    nil
-                    (lambda ()
-                      (throw 'exit t)))
-    (let ((beg (point)))
-      (paredit-close-round)
-      (let ((end (point)))
-        (align-regexp beg end "\\(\\s-*\\):")))))
+  (save-excursion
+    (catch 'exit
+      (beginning-of-buffer)
+      (search-forward ":require "
+                      nil
+                      (lambda ()
+                        (throw 'exit t)))
+      (let ((beg (point)))
+        (paredit-close-round)
+        (let ((end (point)))
+          (align-regexp beg end "\\(\\s-*\\):"))))))
 
 ;; hack, wait for clj-refactor updates to make it better
 (defun cljr--search-forward-within-sexp (s &optional save-excursion)
@@ -97,8 +98,8 @@
     (cljr-sort-ns)
     (clojure-align-requires)))
 
-(add-hook 'before-save-hook
-          'clojure-cleanup-ns)
+;; (add-hook 'before-save-hook
+;;           'clojure-cleanup-ns)
 
 (defun cider-start-browser-repl ()
   "Start a browser repl"
