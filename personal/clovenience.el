@@ -74,21 +74,23 @@
         (let ((end (point)))
           (align-regexp beg end "\\(\\s-*\\):"))))))
 
+(eval-after-load "clj-refactor"
+
 ;; hack, wait for clj-refactor updates to make it better
-(defun cljr--search-forward-within-sexp (s &optional save-excursion)
-  "Searches forward for S in the current sexp.
-   S must be followed by a space, ), or ] character.
-   If SAVE-EXCURSION is T POINT does not move."
-  (let ((bound (save-excursion (forward-list 1) (point)))
-        (search-regex (concat s "[] )]")))
-    (cl-flet ((do-search ()
-                         (when (search-forward-regexp search-regex bound t)
-                           (backward-char)
-                           (point))))
-      (if save-excursion
-          (save-excursion
-            (do-search))
-        (do-search)))))
+  '(defun cljr--search-forward-within-sexp (s &optional save-excursion)
+     "Searches forward for S in the current sexp.
+      S must be followed by a space, ), or ] character.
+      If SAVE-EXCURSION is T POINT does not move."
+     (let ((bound (save-excursion (forward-list 1) (point)))
+           (search-regex (concat s "[] )]")))
+       (cl-flet ((do-search ()
+                            (when (search-forward-regexp search-regex bound t)
+                              (backward-char)
+                              (point))))
+         (if save-excursion
+             (save-excursion
+               (do-search))
+           (do-search))))))
 
 (defun clojure-cleanup-ns ()
   (interactive)
@@ -98,8 +100,8 @@
     (cljr-sort-ns)
     (clojure-align-requires)))
 
-;; (add-hook 'before-save-hook
-;;           'clojure-cleanup-ns)
+(add-hook 'before-save-hook
+          'clojure-cleanup-ns)
 
 (defun cider-start-browser-repl ()
   "Start a browser repl"
