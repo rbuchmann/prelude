@@ -39,7 +39,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk clojure-snippets color-theme livescript-mode org-trello clj-refactor slamhound tup-mode))
+(prelude-require-packages '(auctex auctex-latexmk clojure-snippets color-theme livescript-mode org-present clj-refactor slamhound tup-mode))
 
 ;;;;;;;;;;
 ;; helm ;;
