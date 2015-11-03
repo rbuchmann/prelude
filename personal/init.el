@@ -197,6 +197,13 @@
   (facts 'defun)
   (fact 'defun))
 
+;;;;;;;;;;;;;;;;;
+;; go language ;;
+;;;;;;;;;;;;;;;;;
+
+(add-hook 'go-mode-hook (lambda ()
+                          (local-set-key (kbd \"M-.\") 'godef-jump)))
+
 ;;;;;;;;;;;;;;;;;;;;
 ;; stringtemplate ;;
 ;;;;;;;;;;;;;;;;;;;;
