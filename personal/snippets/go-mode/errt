@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: errt
+# key: errt
+# --
+
+if err != nil {
+   t.Errorf("$0", err)
+}
+
+$1

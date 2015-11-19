@@ -54,7 +54,7 @@
 ;;;;;;;;;;;;;;;
 
 (yas-global-mode 1)
-(setq yas-snippet-dirs (append yas-snippet-dirs '("~/.emacs.d/personal/snippets")))
+(setq yas-snippet-dirs (append '("~/.emacs.d/personal/snippets") yas-snippet-dirs))
 (yas-load-directory "~/.emacs.d/personal/snippets")
 
 ;;;;;;;;;;;;;;;;;;
