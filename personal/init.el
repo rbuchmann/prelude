@@ -201,8 +201,11 @@
 ;; go language ;;
 ;;;;;;;;;;;;;;;;;
 
-(add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "M-.") 'godef-jump)))
+(defun my-go-mode-hook ()
+  (setq gofmt-command "goimports")
+  (local-set-key (kbd "M-.") 'godef-jump))
+
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; stringtemplate ;;
