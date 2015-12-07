@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: logprintln
+# key: lp
+# --
+log.Println("$1")
+$0

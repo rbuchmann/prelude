@@ -1,9 +1,8 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: errt
-# key: errt
+# name: errorf
+# key: ef
 # --
 if err != nil {
-   t.Errorf("$1 : %v", err)
+   t.Error("$1"$2)
 }
-
 $0
