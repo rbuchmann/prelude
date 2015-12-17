@@ -39,7 +39,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk clojure-snippets color-theme livescript-mode org-present clj-refactor slamhound tup-mode))
+(prelude-require-packages '(auctex auctex-latexmk clojure-snippets color-theme livescript-mode org-present clj-refactor slamhound magit-gerrit tup-mode))
 
 ;;;;;;;;;;
 ;; helm ;;
@@ -245,3 +245,4 @@
 ;;;;;;;;;;;
 
 (setq magit-push-always-verify nil)
+(require 'magit-gerrit)
