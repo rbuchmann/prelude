@@ -39,7 +39,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk clojure-snippets color-theme livescript-mode org-present clj-refactor slamhound magit-gerrit tup-mode))
+(prelude-require-packages '(auctex auctex-latexmk clojure-snippets color-theme livescript-mode org-present clj-refactor slamhound magit-gerrit tup-mode magit-gh-pulls))
 
 ;;;;;;;;;;
 ;; helm ;;
@@ -246,3 +246,5 @@
 
 (setq magit-push-always-verify nil)
 (require 'magit-gerrit)
+(require 'magit-gh-pulls)
+(add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
