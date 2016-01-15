@@ -178,17 +178,26 @@
 
 (require 'clj-refactor)
 
-(add-hook 'clojure-mode-hook (lambda ()
-                               (clj-refactor-mode 1)
-                               (cljr-add-keybindings-with-prefix "C-c C-f")
-                               (define-key clojure-mode-map (kbd "C-c C-s")   'clojure-goto-test-or-back)
-                               (define-key clojure-mode-map (kbd "C-c C-a") 'clojure-add-ns)
-))
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (paredit-mode 1)
+            (clj-refactor-mode 1)
+            (cljr-add-keybindings-with-prefix "C-c C-f")
+            (define-key clojure-mode-map
+              (kbd "C-c C-s")
+              'clojure-goto-test-or-back)
+            (define-key clojure-mode-map
+              (kbd "C-c C-a")
+              'clojure-add-ns)))
 
 
 (add-to-list 'auto-mode-alist '("\.pxi$" . clojure-mode))
 
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'paredit-mode-hook
+          (lambda ()
+            (local-set-key (kbd "M-q") 'indent-sexp)))
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (setq cider-repl-use-clojure-font-lock t)
 
