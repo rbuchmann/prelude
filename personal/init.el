@@ -236,6 +236,8 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DONE(d!)" "CANCELED(c@)")))
 
+(setq org-modules (append org-modules '(org-habits)))
+
 (eval-after-load "org-present"
   '(progn
      (add-hook 'org-present-mode-hook
