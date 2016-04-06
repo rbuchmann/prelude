@@ -79,30 +79,32 @@
         (let ((end (point)))
           (align-regexp beg end "\\(\\s-*\\):"))))))
 
-(eval-after-load "clj-refactor"
+;;; TODO: cljr-sort-ns has gone, need to reimplement this stuff
 
-;; hack, wait for clj-refactor updates to make it better
-  '(defun cljr--search-forward-within-sexp (s &optional save-excursion)
-     "Searches forward for S in the current sexp.
-      S must be followed by a space, ), or ] character.
-      If SAVE-EXCURSION is T POINT does not move."
-     (let ((bound (save-excursion (forward-list 1) (point)))
-           (search-regex (concat s "[] )]")))
-       (cl-flet ((do-search ()
-                            (when (search-forward-regexp search-regex bound t)
-                              (backward-char)
-                              (point))))
-         (if save-excursion
-             (save-excursion
-               (do-search))
-           (do-search))))))
+;; (eval-after-load "clj-refactor"
+
+;; ;; hack, wait for clj-refactor updates to make it better
+;;   '(defun cljr--search-forward-within-sexp (s &optional save-excursion)
+;;      "Searches forward for S in the current sexp.
+;;       S must be followed by a space, ), or ] character.
+;;       If SAVE-EXCURSION is T POINT does not move."
+;;      (let ((bound (save-excursion (forward-list 1) (point)))
+;;            (search-regex (concat s "[] )]")))
+;;        (cl-flet ((do-search ()
+;;                             (when (search-forward-regexp search-regex bound t)
+;;                               (backward-char)
+;;                               (point))))
+;;          (if save-excursion
+;;              (save-excursion
+;;                (do-search))
+;;            (do-search))))))
 
 (defun clojure-cleanup-ns ()
   (interactive)
   (when (or
          (eq major-mode 'clojure-mode)
          (eq major-mode 'clojurescript-mode))
-    (cljr-sort-ns)
+    ;; (cljr-sort-ns)
     (clojure-align-requires)))
 
 (add-hook 'before-save-hook
