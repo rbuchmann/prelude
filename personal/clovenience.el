@@ -61,9 +61,9 @@
     (if (or test-p
             (file-exists-p target-file)
             (find-buffer-visiting target-file))
-        (find-file target-file)
+        (find-file-other-window target-file)
       (progn (make-directory (file-name-directory target-file) t)
-             (find-file target-file)))))
+             (find-file-other-window target-file)))))
 
 
 (defun clojure-align-requires ()
