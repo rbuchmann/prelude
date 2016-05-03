@@ -35,6 +35,10 @@
 
 (setq magit-last-seen-setup-instructions "1.4.0")
 
+(prefer-coding-system 'utf-8)
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
