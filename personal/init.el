@@ -211,12 +211,31 @@
   (facts 'defun)
   (fact 'defun))
 
+;;;;;;;;
+;; js ;;
+;;;;;;;;
+
+(require 'flycheck-flow)
+(defun my-js-mode-hook ()
+  (setq-default)
+  (setq tab-width 2)
+  (setq standard-indent 2)
+  (setq indent-tabs-mode nil)
+  (paredit-mode t))
+
+(add-hook 'js-mode-hook 'my-js-mode-hook)
+(add-hook 'jsx-mode-hook 'my-js-mode-hook)
+
 ;;;;;;;;;;;;;;;;;
 ;; go language ;;
 ;;;;;;;;;;;;;;;;;
 
 (defun my-go-mode-hook ()
   (setq gofmt-command "goimports")
+  (setq-default)
+  (setq tab-width 2)
+  (setq standard-indent 2)
+  (setq indent-tabs-mode nil)
   (local-set-key (kbd "M-.") 'godef-jump))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
