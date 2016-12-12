@@ -202,7 +202,7 @@
 (add-hook 'paredit-mode-hook
           (lambda ()
             (local-set-key (kbd "M-q") 'indent-sexp)))
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook 'eldoc-mode)
 (setq cider-repl-use-clojure-font-lock t)
 
 (define-clojure-indent
