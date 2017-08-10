@@ -25,6 +25,9 @@ tramp
 .emacs.desktop
 .emacs.desktop.lock
 network-security.data
+<<<<<<< HEAD
 prelude-cheatsheet.el
 prelude-cheatsheet.aux
 prelude-cheatsheet.log
+=======
+>>>>>>> Ignore network-security.data file
