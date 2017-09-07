@@ -39,6 +39,9 @@
 ;; (setq coding-system-for-read 'utf-8)
 ;; (setq coding-system-for-write 'utf-8)
 
+(setq company-dabbrev-downcase nil)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -52,6 +55,7 @@
 (require 'helm-files)
 (setq helm-boring-file-regexp-list (append '("\\.$" "\\.\\.$" "\\.bst$" "\\.cls$" "\\.fdb_latexmk$" "\\.fls$" "\\.bbl$" "\\.blg$" "\\.aux$") 'helm-boring-file-regexp-list))
 (setq helm-ff-skip-boring-files t)
+(setq helm-grep-ag-command "rg --vimgrep --no-heading")
 
 ;;;;;;;;;;;;;;;
 ;; yasnippet ;;
@@ -65,6 +69,9 @@
 ;; Key Bindings ;;
 ;;;;;;;;;;;;;;;;;;
 
+(global-set-key [f6] (lambda()(interactive)
+                       (switch-to-buffer (make-temp-name "story"))
+                       (insert-file-contents "~/org/story_template.txt")))
 (global-set-key [f7]   (lambda()(interactive)(find-file "~/org/todo.org")))
 (global-set-key [f8]   (lambda()(interactive)(find-file (concat conf-dir "init.el"))))
 (global-set-key [f9]   (lambda()(interactive)(find-file "~/.lein/profiles.clj")))
@@ -178,6 +185,9 @@
 ;; clojure ;;
 ;;;;;;;;;;;;;
 
+(add-to-list 'interpreter-mode-alist
+             '("trile" . clojure-mode))
+
 (load-file "~/.emacs.d/personal/clovenience.el")
 
 (require 'clj-refactor)
@@ -202,7 +212,7 @@
 (add-hook 'paredit-mode-hook
           (lambda ()
             (local-set-key (kbd "M-q") 'indent-sexp)))
-(add-hook 'cider-mode-hook 'eldoc-mode)
+
 (setq cider-repl-use-clojure-font-lock t)
 
 (define-clojure-indent
@@ -211,20 +221,59 @@
   (facts 'defun)
   (fact 'defun))
 
+;;;;;;;;;;;;;;
+;; ponylang ;;
+;;;;;;;;;;;;;;
+
+(require 'ponylang-mode)
+
+(add-hook
+ 'ponylang-mode-hook
+ (lambda ()
+   (set-variable 'indent-tabs-mode nil)
+   (set-variable 'tab-width 2)))
+
 ;;;;;;;;
 ;; js ;;
 ;;;;;;;;
 
-(require 'flycheck-flow)
-(defun my-js-mode-hook ()
-  (setq-default)
-  (setq tab-width 2)
-  (setq standard-indent 2)
-  (setq indent-tabs-mode nil)
-  (paredit-mode t))
+;; (require 'flycheck-flow)
+;; (defun my-js-mode-hook ()
+;;   (jsx-mode)
+;;   (setq-default)
+;;   (setq tab-width 2)
+;;   (setq standard-indent 2)
+;;   (setq indent-tabs-mode nil)
+;;   (electric-pair-mode t))
 
-(add-hook 'js-mode-hook 'my-js-mode-hook)
-(add-hook 'jsx-mode-hook 'my-js-mode-hook)
+;; (add-hook 'js-mode-hook 'my-js-mode-hook)
+
+(use-package jsx-flow-mode
+  :load-path "/home/rasmus/programming/libs/jsx-flow-mode"
+  :config
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.js\\'" . jsx-flow-mode))
+    (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-flow-mode))))
+
+(require 'prettier-js)
+(setq prettier-js-args '(
+                         "--print-width" "120"
+                         "--tab-width" "4"
+                         ;  parser" "babylon"
+                         "--single-quote"  "false"
+                         "--trailing-comma" "none"
+                         "--bracket-spacing" "true"
+                         "--jsx-bracket-same-line" "true"
+                         ))
+
+(add-hook 'jsx-flow-mode-hook
+          (lambda ()
+            (prettier-js-mode t)
+            (setq-default)
+            (setq c-basic-offset 4)
+            (setq tab-width 4)
+            (setq standard-indent 4)
+            (setq indent-tabs-mode nil)))
 
 ;;;;;;;;;;;;;;;;;
 ;; go language ;;
@@ -288,4 +337,10 @@
 ;; start server ;;
 ;;;;;;;;;;;;;;;;;;
 
+;; For Chrome
+(require 'edit-server)
+(edit-server-start)
+
+
+;; Standard emacs server
 (server-start)
