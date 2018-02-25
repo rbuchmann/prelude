@@ -53,7 +53,7 @@
 ;;;;;;;;;;
 
 (require 'helm-files)
-(setq helm-boring-file-regexp-list (append '("\\.$" "\\.\\.$" "\\.bst$" "\\.cls$" "\\.fdb_latexmk$" "\\.fls$" "\\.bbl$" "\\.blg$" "\\.aux$") 'helm-boring-file-regexp-list))
+
 (setq helm-ff-skip-boring-files t)
 (setq helm-grep-ag-command "rg --vimgrep --no-heading")
 
@@ -192,8 +192,18 @@
 
 (require 'clj-refactor)
 
+(defun pretty-fns ()
+  "make some word or string show as pretty Unicode symbols"
+  (setq prettify-symbols-alist
+        '(
+          ("fn" . 955) ; λ
+          )))
+
+(global-prettify-symbols-mode 1)
+
 (add-hook 'clojure-mode-hook
           (lambda ()
+            (pretty-fns)
             (paredit-mode 1)
             (clj-refactor-mode 1)
             (cljr-add-keybindings-with-prefix "C-c C-f")
@@ -214,12 +224,20 @@
             (local-set-key (kbd "M-q") 'indent-sexp)))
 
 (setq cider-repl-use-clojure-font-lock t)
+(setq cider-repl-use-pretty-printing t)
+(setq cider-pprint-fn 'pprint)
+
+; (set-variable 'cider-lein-parameters "with-profile +dev repl :headless")
+
 
 (define-clojure-indent
   (describe 'defun)
   (it 'defun)
   (facts 'defun)
   (fact 'defun))
+
+(setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+
 
 ;;;;;;;;;;;;;;
 ;; ponylang ;;

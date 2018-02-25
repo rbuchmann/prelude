@@ -77,7 +77,7 @@
       (let ((beg (point)))
         (paredit-close-round)
         (let ((end (point)))
-          (align-regexp beg end "\\(\\s-*\\):"))))))
+          (align-regexp beg end "\\(\\s-*\\):\\(as\\|refer\\)"))))))
 
 ;;; TODO: cljr-sort-ns has gone, need to reimplement this stuff
 
@@ -103,6 +103,7 @@
   (interactive)
   (when (or
          (eq major-mode 'clojure-mode)
+         (eq major-mode 'clojurec-mode)
          (eq major-mode 'clojurescript-mode))
     ;; (cljr-sort-ns)
     (clojure-align-requires)))
