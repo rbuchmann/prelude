@@ -39,6 +39,9 @@
 ;; (setq coding-system-for-read 'utf-8)
 ;; (setq coding-system-for-write 'utf-8)
 
+
+;; Fixes a wtf where it pings domains instead of autocompleting Oo
+(setq ido-use-filename-at-point nil)
 (setq company-dabbrev-downcase nil)
 
 
@@ -46,7 +49,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk clojure-snippets color-theme livescript-mode org-present clj-refactor magit-gerrit tup-mode magit-gh-pulls))
+(prelude-require-packages '(auctex auctex-latexmk color-theme clj-refactor magit-gerrit magit-gh-pulls use-package prettier-js))
 
 ;;;;;;;;;;
 ;; helm ;;
@@ -74,7 +77,7 @@
                        (insert-file-contents "~/org/story_template.txt")))
 (global-set-key [f7]   (lambda()(interactive)(find-file "~/org/todo.org")))
 (global-set-key [f8]   (lambda()(interactive)(find-file (concat conf-dir "init.el"))))
-(global-set-key [f9]   (lambda()(interactive)(find-file "~/.lein/profiles.clj")))
+(global-set-key [f9]   (lambda()(interactive)(find-file "~/org/interruptions.org")))
 (global-set-key [f10] (lambda()(interactive)(comment-or-uncomment-region (region-beginning) (region-end))))
 (add-hook 'clojure-mode-hook '(lambda ()
                                 (local-set-key (kbd "RET") 'newline-and-indent)))
@@ -119,12 +122,13 @@
 ;; maximum colors
 (setq font-lock-maximum-decoration t)
 
+(setq prelude-guru nil)
+
 ;;;;;;;;;;;;
 ;; AucTex ;;
 ;;;;;;;;;;;;
 
 (require 'tex-site)
-(setq prelude-guru nil)
 
 (require 'reftex)
 
@@ -238,19 +242,6 @@
 
 (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
 
-
-;;;;;;;;;;;;;;
-;; ponylang ;;
-;;;;;;;;;;;;;;
-
-(require 'ponylang-mode)
-
-(add-hook
- 'ponylang-mode-hook
- (lambda ()
-   (set-variable 'indent-tabs-mode nil)
-   (set-variable 'tab-width 2)))
-
 ;;;;;;;;
 ;; js ;;
 ;;;;;;;;
@@ -322,9 +313,10 @@
 
 (setq org-src-fontify-natively t)
 
-
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DONE(d!)" "CANCELED(c@)")))
+      '((sequence "TODO" "|" "DONE" "CANCELED")))
+
+(setq org-log-done nil)
 
 (setq org-modules (append org-modules '(org-habits)))
 
@@ -354,11 +346,6 @@
 ;;;;;;;;;;;;;;;;;;
 ;; start server ;;
 ;;;;;;;;;;;;;;;;;;
-
-;; For Chrome
-(require 'edit-server)
-(edit-server-start)
-
 
 ;; Standard emacs server
 (server-start)
