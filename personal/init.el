@@ -49,7 +49,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk color-theme clj-refactor magit-gerrit magit-gh-pulls use-package prettier-js))
+(prelude-require-packages '(auctex auctex-latexmk color-theme clj-refactor magit-gerrit magit-gh-pulls use-package prettier-js color-theme))
 
 ;;;;;;;;;;
 ;; helm ;;
@@ -83,12 +83,6 @@
                                 (local-set-key (kbd "RET") 'newline-and-indent)))
 
 (global-set-key (kbd "C-x ,") 'comment-or-uncomment-region)
-
-;;;;;;;;;;;;;;;;
-;; livescript ;;
-;;;;;;;;;;;;;;;;
-
-(require 'livescript-mode)
 
 ;;;;;;;;;;;;;;
 ;; uniquify ;;
