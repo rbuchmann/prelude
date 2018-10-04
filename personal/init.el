@@ -43,7 +43,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk clojure-snippets color-theme livescript-mode org-present clj-refactor slamhound magit-gerrit tup-mode magit-gh-pulls))
+(prelude-require-packages '(auctex auctex-latexmk clojure-snippets color-theme livescript-mode org-present clj-refactor magit-gerrit tup-mode magit-gh-pulls))
 
 ;;;;;;;;;;
 ;; helm ;;
