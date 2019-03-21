@@ -49,7 +49,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk color-theme clj-refactor magit-gerrit magit-gh-pulls use-package prettier-js color-theme))
+(prelude-require-packages '(auctex auctex-latexmk color-theme clj-refactor magit-gerrit magit-gh-pulls use-package prettier-js color-theme ein pytest))
 
 ;;;;;;;;;;
 ;; helm ;;
@@ -292,27 +292,50 @@
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
-;;;;;;;;;;;;;;;;;;;;
-;; stringtemplate ;;
-;;;;;;;;;;;;;;;;;;;;
-
-(load-file "~/.emacs.d/personal/stringtemplate-mode.el")
-(require 'stringtemplate-mode)
-
 ;;;;;;;;;;;;;
 ;; orgmode ;;
 ;;;;;;;;;;;;;
 
-(setq org-agenda-files (list "~/org/"))
+(setq org-agenda-files (list "~/org/todo.org"))
+
+(setq org-refile-targets '(("~/org/todo.org" :maxlevel . 1)
+                           ("~/org/home.org" :maxlevel . 1)
+                           ("~/gtd/backlog.org" :level . 1)))
 
 (setq org-src-fontify-natively t)
+
+;; (setq org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)
+
+;; (setq org-agenda-custom-commands
+;;       '(("o" "At the office"
+;;          ((agenda "" ((org-agenda-files '("~/org/todo.org"))))
+;;           (org-agenda-overriding-header "Office")
+;;           (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))
+;;         ("h" "At home"
+;;          ((agenda "" ((org-agenda-files '("~/org/home.org"))))
+;;           (org-agenda-overriding-header "Home")
+;;           (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))))
+
+(defun my-org-agenda-skip-all-siblings-but-first ()
+  "Skip all but the first non-done entry."
+  (let (should-skip-entry)
+    (unless (org-current-is-todo)
+      (setq should-skip-entry t))
+    (save-excursion
+      (while (and (not should-skip-entry) (org-goto-sibling t))
+        (when (org-current-is-todo)
+          (setq should-skip-entry t))))
+    (when should-skip-entry
+      (or (outline-next-heading)
+          (goto-char (point-max))))))
+
+(defun org-current-is-todo ()
+  (string= "TODO" (org-get-todo-state)))
 
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE" "CANCELED")))
 
 (setq org-log-done nil)
-
-(setq org-modules (append org-modules '(org-habits)))
 
 (eval-after-load "org-present"
   '(progn
