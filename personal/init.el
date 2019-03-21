@@ -49,7 +49,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk color-theme clj-refactor magit-gerrit magit-gh-pulls use-package prettier-js color-theme ein pytest))
+(prelude-require-packages '(auctex auctex-latexmk color-theme clj-refactor use-package prettier-js color-theme))
 
 ;;;;;;;;;;
 ;; helm ;;
