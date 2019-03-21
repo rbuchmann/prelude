@@ -75,9 +75,10 @@
 (global-set-key [f6] (lambda()(interactive)
                        (switch-to-buffer (make-temp-name "story"))
                        (insert-file-contents "~/org/story_template.txt")))
-(global-set-key [f7]   (lambda()(interactive)(find-file "~/org/todo.org")))
+(global-set-key [f7]   (lambda()(interactive)(find-file "~/org/inbox.org")))
 (global-set-key [f8]   (lambda()(interactive)(find-file (concat conf-dir "init.el"))))
-(global-set-key [f9]   (lambda()(interactive)(find-file "~/org/interruptions.org")))
+(global-set-key [f9]   (lambda () (interactive)
+                         (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))))
 (global-set-key [f10] (lambda()(interactive)(comment-or-uncomment-region (region-beginning) (region-end))))
 (add-hook 'clojure-mode-hook '(lambda ()
                                 (local-set-key (kbd "RET") 'newline-and-indent)))
@@ -351,6 +352,16 @@
                  (org-remove-inline-images)
                  (org-present-show-cursor)
                  (org-present-read-write)))))
+
+(defun org-archive-done-tasks ()
+  (interactive)
+  (org-map-entries
+   (lambda ()
+     (org-archive-subtree)
+     (setq org-map-continue-from (outline-previous-heading)))
+   "/DONE" 'tree))
+
+
 ;;;;;;;;;;;
 ;; magit ;;
 ;;;;;;;;;;;
