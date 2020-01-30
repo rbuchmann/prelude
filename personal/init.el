@@ -26,7 +26,7 @@
 
 (load-file "~/.emacs.d/personal/local_settings.el")
 
-(add-to-list 'default-frame-alist (cons 'font local-font))
+
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (setq-default frame-title-format "%b %f")
@@ -49,7 +49,7 @@
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk color-theme clj-refactor use-package prettier-js color-theme))
+(prelude-require-packages '(auctex auctex-latexmk clj-refactor use-package prettier-js color-theme-modern org-pomodoro doom-themes))
 
 ;;;;;;;;;;
 ;; helm ;;
@@ -102,15 +102,26 @@
 ;(tool-bar-mode -1)
 ;(menu-bar-mode -1)
 (set-scroll-bar-mode 'right)
-(set-default-font local-font)
+(set-small-font)
+(setq use-default-font-for-symbols nil)
 
-(require 'color-theme)
-;(load "color-theme-blue")
-(color-theme-blue)
-;(load-theme 'manoj-dark)
+(setq split-height-threshold nil)
+
+(require 'color-theme-modern)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; (load-theme 'color-theme-blue)
+
+(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+      doom-themes-enable-italic t)
+
+(load-theme 'doom-outrun-electric t)
+;;(load-theme 'manoj-dark) <- This was the previous one
+;; (load-theme 'cyberpunk t)
+;; (load-theme 'cyberpunk-2019)
 ;; (load "color-theme-dark-bliss")(color-theme-dark-bliss)
 ;; (load "color-theme-twilight")(color-theme-twilight)
-;;(load "color-theme-sunburst")(color-theme-tm)
+;; (load "color-theme-sunburst")(color-theme-tm)
 
 (global-font-lock-mode 1)
 (global-hl-line-mode -1)
@@ -118,6 +129,15 @@
 (setq font-lock-maximum-decoration t)
 
 (setq prelude-guru nil)
+
+;; (setq-default mode-line-format
+;;       (list
+;;        ;; value of `mode-name'
+;;        "%m: "
+;;        ;; value of current buffer name
+;;        "buffer %b, "
+;;        ;; value of current line number
+;;        "line %l "))
 
 ;;;;;;;;;;;;
 ;; AucTex ;;
@@ -215,6 +235,7 @@
 
 
 (add-to-list 'auto-mode-alist '("\.pxi$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\.sk$" . clojure-mode))
 
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
@@ -235,7 +256,7 @@
   (facts 'defun)
   (fact 'defun))
 
-(setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+; (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
 
 ;;;;;;;;
 ;; js ;;
@@ -367,9 +388,6 @@
 ;;;;;;;;;;;
 
 (setq magit-push-always-verify nil)
-(require 'magit-gerrit)
-(require 'magit-gh-pulls)
-(add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
 
 ;;;;;;;;;;;;;;;;;;
 ;; start server ;;
