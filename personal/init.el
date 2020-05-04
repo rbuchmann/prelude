@@ -26,7 +26,6 @@
 
 (load-file "~/.emacs.d/personal/local_settings.el")
 
-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (setq-default frame-title-format "%b %f")
@@ -44,12 +43,13 @@
 (setq ido-use-filename-at-point nil)
 (setq company-dabbrev-downcase nil)
 
+(setq alert-default-style 'notifications)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package Autoinstall ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(auctex auctex-latexmk clj-refactor use-package prettier-js color-theme-modern org-pomodoro doom-themes))
+(prelude-require-packages '(auctex auctex-latexmk clj-refactor use-package prettier-js color-theme-modern org-pomodoro doom-themes ace-jump-mode alert org-trello))
 
 ;;;;;;;;;;
 ;; helm ;;
@@ -84,6 +84,8 @@
                                 (local-set-key (kbd "RET") 'newline-and-indent)))
 
 (global-set-key (kbd "C-x ,") 'comment-or-uncomment-region)
+
+(global-set-key (kbd "C-.") 'ace-jump-mode)
 
 ;;;;;;;;;;;;;;
 ;; uniquify ;;
@@ -225,6 +227,7 @@
             (pretty-fns)
             (paredit-mode 1)
             (clj-refactor-mode 1)
+            (rainbow-delimiters-mode-disable)
             (cljr-add-keybindings-with-prefix "C-c C-f")
             (define-key clojure-mode-map
               (kbd "C-c C-s")
@@ -318,11 +321,11 @@
 ;; orgmode ;;
 ;;;;;;;;;;;;;
 
-(setq org-agenda-files (list "~/org/todo.org"))
+(setq org-agenda-files (list "~/org/todo.org" "~/org/1on1_ks.org" "~/org/jan_themen.org"))
 
 (setq org-refile-targets '(("~/org/todo.org" :maxlevel . 1)
                            ("~/org/home.org" :maxlevel . 1)
-                           ("~/gtd/backlog.org" :level . 1)))
+                           ("~/org/backlog.org" :level . 1)))
 
 (setq org-src-fontify-natively t)
 
@@ -355,24 +358,9 @@
   (string= "TODO" (org-get-todo-state)))
 
 (setq org-todo-keywords
-      '((sequence "TODO" "|" "DONE" "CANCELED")))
+      '((sequence "TODO" "|" "DONE" "CANCELED" "Erledigt" "Done")))
 
 (setq org-log-done nil)
-
-(eval-after-load "org-present"
-  '(progn
-     (add-hook 'org-present-mode-hook
-               (lambda ()
-                 (org-present-big)
-                 (org-display-inline-images)
-                 (org-present-hide-cursor)
-                 (org-present-read-only)))
-     (add-hook 'org-present-mode-quit-hook
-               (lambda ()
-                 (org-present-small)
-                 (org-remove-inline-images)
-                 (org-present-show-cursor)
-                 (org-present-read-write)))))
 
 (defun org-archive-done-tasks ()
   (interactive)
@@ -381,7 +369,6 @@
      (org-archive-subtree)
      (setq org-map-continue-from (outline-previous-heading)))
    "/DONE" 'tree))
-
 
 ;;;;;;;;;;;
 ;; magit ;;
