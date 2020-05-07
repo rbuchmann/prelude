@@ -327,6 +327,8 @@
                            ("~/org/home.org" :maxlevel . 1)
                            ("~/org/backlog.org" :level . 1)))
 
+(setq org-refile-use-outline-path 'file)
+
 (setq org-src-fontify-natively t)
 
 ;; (setq org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)
