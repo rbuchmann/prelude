@@ -276,13 +276,6 @@
 
 ;; (add-hook 'js-mode-hook 'my-js-mode-hook)
 
-(use-package jsx-flow-mode
-  :load-path "/home/rasmus/programming/libs/jsx-flow-mode"
-  :config
-  (progn
-    (add-to-list 'auto-mode-alist '("\\.js\\'" . jsx-flow-mode))
-    (add-to-list 'auto-mode-alist '("\\.jsx\\'" . jsx-flow-mode))))
-
 (require 'prettier-js)
 (setq prettier-js-args '(
                          "--print-width" "120"
