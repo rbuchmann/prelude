@@ -58,7 +58,7 @@
 (require 'helm-files)
 
 (setq helm-ff-skip-boring-files t)
-(setq helm-grep-ag-command "rg --vimgrep --no-heading")
+(setq helm-grep-ag-command "rg --vimgrep --no-heading --smart-case")
 
 ;;;;;;;;;;;;;;;
 ;; yasnippet ;;
