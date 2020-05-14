@@ -1,5 +1,4 @@
 [![License GPL 3][badge-license]](http://www.gnu.org/licenses/gpl-3.0.txt)
-[![Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/bbatsov/donate)
 [![Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/bbatsov)
 
 Emacs Prelude
@@ -17,18 +16,13 @@ advised to always run Prelude with the latest Emacs - currently
 **26.1**.
 
 You can support the development of Prelude via
-[PayPal](https://www.paypal.me/bbatsov),
-[Salt](https://bountysource.com/teams/prelude),
-[Patreon](https://www.patreon.com/bbatsov) and
-[Liberapay](https://liberapay.com/bbatsov/donate).
-
-[![Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/bbatsov/donate)
-[![Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/bbatsov)
+[PayPal](https://www.paypal.me/bbatsov) and
+[Patreon](https://www.patreon.com/bbatsov).
 
 ## Fast Forward
 
 Assuming you're using an Unix-like OS (`*BSD`, `GNU/Linux`, `macOS`, `Solaris`,
-etc), you already have Emacs 24.4+ installed, as well as `git` & `curl` you
+etc), you already have a recent version of Emacs installed, as well as `git` & `curl` you
 can skip the whole manual and just type in your favorite shell the
 following command:
 
@@ -36,8 +30,7 @@ following command:
 curl -L https://git.io/epre | sh
 ```
 
-You can now power up your Emacs, sit back and enjoy Prelude,
-forgetting about the rest of this manual.
+You can now power up your Emacs, sit back and enjoy Prelude.
 
 There are two environment variables you can use to control the
 source repository and the installation directory. To change the
@@ -58,11 +51,15 @@ Note that the installer will back up any existing `.emacs` file or
 you're doing a manual install make sure you don't have a `.emacs` file
 or back up your existing `.emacs.d` directory manually.
 
-Don't forget to adjust your `prelude-modules.el` file in your personal directory
+**Important:** Don't forget to adjust your `prelude-modules.el` file in your personal directory
 once the installation is done. By default most of the modules
-that ship with Prelude are not loaded.
+that ship with Prelude are **not** loaded.
 
 ## User Manual
+
+While Emacs Prelude is pretty simple at its core, it does have some specifics that
+are worth learning - e.g. configuration options, load order of modules and personal settings
+and so on.
 
 Check out our [user manual](https://prelude.emacsredux.com) for more information.
 
