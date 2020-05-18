@@ -313,10 +313,9 @@
 ;; orgmode ;;
 ;;;;;;;;;;;;;
 
-(setq org-agenda-files (list "~/org/todo.org" "~/org/1on1_ks.org" "~/org/jan_themen.org"))
+(setq org-agenda-files (list "~/org/agenda"))
 
-(setq org-refile-targets '(("~/org/todo.org" :maxlevel . 1)
-                           ("~/org/home.org" :maxlevel . 1)
+(setq org-refile-targets '(("~/org/agenda/todo.org" :maxlevel . 1)
                            ("~/org/backlog.org" :level . 1)))
 
 (setq org-refile-use-outline-path 'file)
